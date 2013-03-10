@@ -1,3 +1,6 @@
 [submodule "web/common"]
 	path = web/common
 	url = https://github.com/synee/blog-common.git
+[submodule "blog-common"]
+	path = blog-common
+	url = https://github.com/synee/blog-common.git
