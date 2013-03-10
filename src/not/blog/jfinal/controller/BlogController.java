@@ -28,7 +28,7 @@ public class BlogController extends Controller{
 
     //GET		/Blog			--->	index
     public void index(){
-
+        renderJson(Blog.dao.paginate(1,10,"SELECT *","FROM blog").getList());
     }
 
     //GET		/Blog/id		--->	show
@@ -45,7 +45,7 @@ public class BlogController extends Controller{
         blog.set("title",title);
         blog.set("content",content);
         blog.save();
-        renderJson(blog);
+        renderJson(Blog.dao.findById(blog.get("id")));
     }
 
     //PUT		/Blog/id		--->	update

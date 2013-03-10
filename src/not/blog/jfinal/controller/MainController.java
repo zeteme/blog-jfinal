@@ -14,7 +14,7 @@ import not.blog.jfinal.model.User;
  */
 public class MainController extends Controller{
     public void index(){
-        renderJsp("/index.jsp");
+        render("common/main.html");
     }
 
     public void login(){
