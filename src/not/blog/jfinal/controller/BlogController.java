@@ -8,6 +8,7 @@ import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import com.jfinal.ext.interceptor.Restful;
 import com.jfinal.kit.JsonKit;
+import com.jfinal.plugin.activerecord.ActiveRecordException;
 import not.blog.jfinal.kit.RequestKit;
 import not.blog.jfinal.model.Blog;
 
@@ -44,8 +45,13 @@ public class BlogController extends Controller{
         Blog blog = new Blog();
         blog.set("title",title);
         blog.set("content",content);
-        blog.save();
-        renderJson(Blog.dao.findById(blog.get("id")));
+        try {
+            blog.save();
+        }catch (ActiveRecordException e){
+            JsonObject json = new JsonObject();
+            json.addProperty("error",e.getMessage());
+            renderJson(json.toString());
+        }
     }
 
     //PUT		/Blog/id		--->	update
