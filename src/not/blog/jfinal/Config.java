@@ -30,7 +30,7 @@ public class Config extends JFinalConfig{
 
     @Override
     public void configPlugin(Plugins me) {
-        C3p0Plugin cp = new C3p0Plugin("jdbc:mysql://localhost:3306/blog","root","password");
+        C3p0Plugin cp = new C3p0Plugin("jdbc:mysql://localhost:3306/blog?characterEncoding=utf8","root","password");
         me.add(cp);
         ActiveRecordPlugin arp = new ActiveRecordPlugin(cp);
         me.add(arp);

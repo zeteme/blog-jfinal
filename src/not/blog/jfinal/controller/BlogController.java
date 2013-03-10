@@ -9,6 +9,7 @@ import com.jfinal.core.Controller;
 import com.jfinal.ext.interceptor.Restful;
 import com.jfinal.kit.JsonKit;
 import com.jfinal.plugin.activerecord.ActiveRecordException;
+import not.blog.jfinal.interceptor.SecureInterceptor;
 import not.blog.jfinal.kit.RequestKit;
 import not.blog.jfinal.model.Blog;
 
@@ -38,15 +39,19 @@ public class BlogController extends Controller{
     }
 
     //POST		/Blog			--->	save
+    @Before({SecureInterceptor.class})
     public void save(){
         JsonObject body = RequestKit.getBody(getRequest()).getAsJsonObject();
-        String title = body.get("title").getAsString();
-        String content = body.get("content").getAsString();
+        String title = null;
+        String content = null;
+        title = body.get("title").getAsString();
+        content = body.get("content").getAsString();
         Blog blog = new Blog();
         blog.set("title",title);
         blog.set("content",content);
         try {
             blog.save();
+            renderJson(blog);
         }catch (ActiveRecordException e){
             JsonObject json = new JsonObject();
             json.addProperty("error",e.getMessage());
@@ -55,6 +60,7 @@ public class BlogController extends Controller{
     }
 
     //PUT		/Blog/id		--->	update
+    @Before({SecureInterceptor.class})
     public void update(){
         JsonObject body = RequestKit.getBody(getRequest()).getAsJsonObject();
         int id = body.get("id").getAsInt();
@@ -68,6 +74,7 @@ public class BlogController extends Controller{
     }
 
     //DELECT	/Blog/id		--->	delete
+    @Before({SecureInterceptor.class})
     public void delete(){
 
     }
