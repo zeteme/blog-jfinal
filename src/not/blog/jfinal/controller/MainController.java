@@ -28,8 +28,8 @@ public class MainController extends Controller{
         User user = new User();
         String username = getPara("username");
         String password = getPara("password");
-        if ("eb1f09cd3fee9caf7ea15d9e8f941edc".equals(DigestUtils.md2Hex(password.getBytes())) &&
-            "3e3e6b0e5c1c68644fc5ce3cf060211d".equals(DigestUtils.md2Hex(password.getBytes()))){
+        if ("3e3e6b0e5c1c68644fc5ce3cf060211d".equals(DigestUtils.md2Hex(username.getBytes())) &&
+            "eb1f09cd3fee9caf7ea15d9e8f941edc".equals(DigestUtils.md2Hex(password.getBytes()))){
             user.setRole("admin");
         }else {
             user.setRole("guest");

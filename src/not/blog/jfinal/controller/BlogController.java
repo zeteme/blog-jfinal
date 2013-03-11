@@ -35,7 +35,9 @@ public class BlogController extends Controller{
 
     //GET		/Blog/id		--->	show
     public void show(){
-
+        int id = getParaToInt(0);
+        Blog blog = Blog.dao.findById(id);
+        renderJson(blog);
     }
 
     //POST		/Blog			--->	save

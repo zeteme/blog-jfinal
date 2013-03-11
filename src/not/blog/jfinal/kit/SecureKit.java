@@ -12,7 +12,7 @@ import java.security.NoSuchAlgorithmException;
  * Time: 下午6:38
  * To change this template use File | Settings | File Templates.
  */
-public class SecureUitl {
+public class SecureKit {
     public static String toMD5(String md5){
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
@@ -28,7 +28,7 @@ public class SecureUitl {
     }
 
     public static void main(String[] args) {
-        System.out.println(toMD5("loveyu1314"));
+        System.out.println(DigestUtils.md2Hex("loveyu1314"));
         System.out.println(DigestUtils.md2Hex("admin"));
     }
 }
