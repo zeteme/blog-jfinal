@@ -11,4 +11,15 @@ import com.jfinal.plugin.activerecord.Model;
  */
 public class Blog extends Model<Blog>{
     public static final Blog dao = new Blog();
+
+    private Category category;
+
+    public void setCategory(Category category){
+        set("category",category.get("id"));
+        this.category = category;
+    }
+
+    public Category getCategory(){
+        return Category.dao.findById(this.getInt("category"));
+    }
 }
