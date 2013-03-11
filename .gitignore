@@ -1,3 +1,5 @@
 # work space setting file
 .idea
 blog-jfinal.iml
+
+web/common
