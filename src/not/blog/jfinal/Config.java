@@ -5,8 +5,10 @@ import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
 import com.jfinal.render.ViewType;
 import not.blog.jfinal.controller.BlogController;
+import not.blog.jfinal.controller.CategoryController;
 import not.blog.jfinal.controller.MainController;
 import not.blog.jfinal.model.Blog;
+import not.blog.jfinal.model.Category;
 
 /**
  * Created with IntelliJ IDEA.
@@ -26,6 +28,7 @@ public class Config extends JFinalConfig{
     public void configRoute(Routes me) {
         me.add("/", MainController.class);
         me.add("/blog", BlogController.class);
+        me.add("/category", CategoryController.class);
     }
 
     @Override
@@ -36,6 +39,7 @@ public class Config extends JFinalConfig{
         me.add(arp);
 
         arp.addMapping("blog", Blog.class);
+        arp.addMapping("category", Category.class);
     }
 
     @Override
@@ -45,6 +49,6 @@ public class Config extends JFinalConfig{
 
     @Override
     public void configHandler(Handlers me) {
-        //To change body of implemented methods use File | Settings | File Templates.
+
     }
 }

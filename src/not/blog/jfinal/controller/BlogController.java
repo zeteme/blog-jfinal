@@ -29,8 +29,14 @@ import java.util.Map;
 public class BlogController extends Controller{
 
     //GET		/Blog			--->	index
-    public void index(){
+    public void list(){
         renderJson(Blog.dao.paginate(1,10,"SELECT *","FROM blog").getList());
+    }
+
+    public void index(){
+        int id = getParaToInt(0);
+        Blog blog = Blog.dao.findById(id);
+        renderJson(blog);
     }
 
     //GET		/Blog/id		--->	show
